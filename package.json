@@ -1,0 +1,42 @@
+{
+  "name": "ticketdesk-chatbot",
+  "version": "0.1",
+  "description": "Ticketdesk AI chatbot for customer support powered by ChatGPT. Provide instant automated responses, AI-powered self-service, and assign to human chat support agents for better customer experience.",
+  "main": "dist/ticketdesk-chatbot.umd.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "test": "npx playwright test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ticketdesk-ai/ticketdesk-chatbot.git"
+  },
+  "keywords": [
+    "ticketdesk",
+    "ai chatbot",
+    "customer support",
+    "helpdesk chatbot",
+    "chatgpt support bot",
+    "ai helpdesk",
+    "support automation",
+    "human chat support",
+    "customer service ai",
+    "ticketing chatbot",
+    "support widget",
+    "website chatbot",
+    "ai customer support",
+    "ticketdesk ai"
+  ],
+  "author": "https://github.com/vickyRathee",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ticketdesk-ai/ticketdesk-chatbot/issues"
+  },
+  "homepage": "https://ticketdesk.ai/",
+  "devDependencies": {
+    "@playwright/test": "^1.39.0",
+    "@types/node": "^20.8.9"
+  }
+}
