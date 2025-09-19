@@ -32,9 +32,18 @@ You can load the chatbot script directly from the Ticketdesk AI CDN:
   window.TICKETDESK_CHATBOT_ID = 'cb_xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'; // Replace with your ID
 </script>
 <script src="https://ticketdesk.ai/chatbot.umd.js"></script>
+```
 
-or download the `ticketdesk-chatbot.umd.js` locally.
+Or, download the `ticketdesk-chatbot.umd.js` locally.
 
 ```
 <script src="/js/ticketdesk-chatbot.umd.js"></script>
 ```
+
+## Support
+
+If you face issues while setting up the chatbot:
+
+- Visit our [Help Center](https://ticketdesk.ai/docs)
+- Reach out via email: support@ticketdesk.ai
+- Or open a ticket directly from your Ticketdesk AI dashboard
