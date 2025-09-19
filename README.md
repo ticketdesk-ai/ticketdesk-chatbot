@@ -3,6 +3,8 @@
 Ticketdesk AI Chatbot widget to embed on any website for **customer support on chat**.  
 You can:
 
+![Ticketdesk AI Chatbot](/assets/ticketdesk-ai-chatbot.png)
+
 - 🚀 Embed it across **multiple domains**  
 - 📚 **Train with your own data** (website, docs, FAQs)  
 - 🤖 Connect with **multiple AI models** (ChatGPT, Gemini, Claude, Perplexity, etc.)  
@@ -30,3 +32,9 @@ You can load the chatbot script directly from the Ticketdesk AI CDN:
   window.TICKETDESK_CHATBOT_ID = 'cb_xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'; // Replace with your ID
 </script>
 <script src="https://ticketdesk.ai/chatbot.umd.js"></script>
+
+or download the `ticketdesk-chatbot.umd.js` locally.
+
+```
+<script src="/js/ticketdesk-chatbot.umd.js"></script>
+```

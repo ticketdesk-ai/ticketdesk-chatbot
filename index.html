@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Ticketdesk Chatbot Demo</title>
     <!-- Tailwind CSS v4 CDN: Preview page only, CSS not required on your website -->
-    <script src="https://cdn.tailwindcss.com/4.0.0"></script>
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
   </head>
   <body class="bg-gray-100 p-8">
     <div class="max-w-3xl mx-auto space-y-6">
@@ -25,10 +25,11 @@
           <li>
             Login to your
             <a
-              class="font-medium"
+              class="font-medium text-blue-600"
               href="https://app.ticketdesk.ai/settings/chatbots"
               target="_blank"
-              >Ticketdesk AI</a
+            >
+              Ticketdesk AI</a
             >
             account.
           </li>
@@ -41,15 +42,16 @@
           </li>
           <li>Paste it into the script below, replacing the sample ID:</li>
         </ol>
-
         <pre
-          class="bg-gray-900 text-green-300 p-4 rounded-lg overflow-x-auto text-sm"
+          class="bg-gray-900 text-green-300 p-4 rounded-lg overflow-x-auto text-sm whitespace-pre"
         >
+<code>
 &lt;script&gt;
   window.TICKETDESK_CHATBOT_ID = 'cb_xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
 &lt;/script&gt;
 &lt;script src="./dist/ticketdesk-chatbot.umd.cjs"&gt;&lt;/script&gt;
-        </pre>
+</code>
+</pre>
       </div>
     </div>
 
