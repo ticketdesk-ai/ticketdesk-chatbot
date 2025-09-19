@@ -320,9 +320,9 @@ var Nd = { exports: {} }, Ke = {}, Td = { exports: {} }, Pd = {};
       p = null, m = D, v = !1;
     }
   }
-  var T = !1, P = null, S = -1, N = 5, E = -1;
+  var N = !1, P = null, S = -1, T = 5, E = -1;
   function B() {
-    return !(e.unstable_now() - E < N);
+    return !(e.unstable_now() - E < T);
   }
   function F() {
     if (P !== null) {
@@ -332,9 +332,9 @@ var Nd = { exports: {} }, Ke = {}, Td = { exports: {} }, Pd = {};
       try {
         I = P(!0, j);
       } finally {
-        I ? re() : (T = !1, P = null);
+        I ? re() : (N = !1, P = null);
       }
-    } else T = !1;
+    } else N = !1;
   }
   var re;
   if (typeof c == "function") re = function() {
@@ -349,7 +349,7 @@ var Nd = { exports: {} }, Ke = {}, Td = { exports: {} }, Pd = {};
     k(F, 0);
   };
   function si(j) {
-    P = j, T || (T = !0, re());
+    P = j, N || (N = !0, re());
   }
   function ui(j, I) {
     S = k(function() {
@@ -361,7 +361,7 @@ var Nd = { exports: {} }, Ke = {}, Td = { exports: {} }, Pd = {};
   }, e.unstable_continueExecution = function() {
     g || v || (g = !0, si(_));
   }, e.unstable_forceFrameRate = function(j) {
-    0 > j || 125 < j ? console.error("forceFrameRate takes a positive int between 0 and 125, forcing frame rates higher than 125 fps is not supported") : N = 0 < j ? Math.floor(1e3 / j) : 5;
+    0 > j || 125 < j ? console.error("forceFrameRate takes a positive int between 0 and 125, forcing frame rates higher than 125 fps is not supported") : T = 0 < j ? Math.floor(1e3 / j) : 5;
   }, e.unstable_getCurrentPriorityLevel = function() {
     return m;
   }, e.unstable_getFirstCallbackNode = function() {
@@ -2098,18 +2098,18 @@ function _i(e, t, n, r, o) {
         else if (Ra(m)) if (pf) _ = v0;
         else {
           _ = y0;
-          var T = m0;
+          var N = m0;
         }
         else (v = m.nodeName) && v.toLowerCase() === "input" && (m.type === "checkbox" || m.type === "radio") && (_ = g0);
         if (_ && (_ = _(e, a))) {
           ff(p, _, n, f);
           break e;
         }
-        T && T(e, m, a), e === "focusout" && (T = m._wrapperState) && T.controlled && m.type === "number" && ts(m, "number", m.value);
+        N && N(e, m, a), e === "focusout" && (N = m._wrapperState) && N.controlled && m.type === "number" && ts(m, "number", m.value);
       }
-      switch (T = a ? Ln(a) : window, e) {
+      switch (N = a ? Ln(a) : window, e) {
         case "focusin":
-          (Ra(T) || T.contentEditable === "true") && (Mn = T, ps = a, Pr = null);
+          (Ra(N) || N.contentEditable === "true") && (Mn = N, ps = a, Pr = null);
           break;
         case "focusout":
           Pr = ps = Mn = null;
@@ -2144,7 +2144,7 @@ function _i(e, t, n, r, o) {
         S = void 0;
       }
       else zn ? cf(e, n) && (S = "onCompositionEnd") : e === "keydown" && n.keyCode === 229 && (S = "onCompositionStart");
-      S && (af && n.locale !== "ko" && (zn || S !== "onCompositionStart" ? S === "onCompositionEnd" && zn && (P = uf()) : (At = f, du = "value" in At ? At.value : At.textContent, zn = !0)), T = dl(a, S), 0 < T.length && (S = new $a(S, e, null, n, f), p.push({ event: S, listeners: T }), P ? S.data = P : (P = df(n), P !== null && (S.data = P)))), (P = a0 ? c0(e, n) : d0(e, n)) && (a = dl(a, "onBeforeInput"), 0 < a.length && (f = new $a("onBeforeInput", "beforeinput", null, n, f), p.push({ event: f, listeners: a }), f.data = P));
+      S && (af && n.locale !== "ko" && (zn || S !== "onCompositionStart" ? S === "onCompositionEnd" && zn && (P = uf()) : (At = f, du = "value" in At ? At.value : At.textContent, zn = !0)), N = dl(a, S), 0 < N.length && (S = new $a(S, e, null, n, f), p.push({ event: S, listeners: N }), P ? S.data = P : (P = df(n), P !== null && (S.data = P)))), (P = a0 ? c0(e, n) : d0(e, n)) && (a = dl(a, "onBeforeInput"), 0 < a.length && (f = new $a("onBeforeInput", "beforeinput", null, n, f), p.push({ event: f, listeners: a }), f.data = P));
     }
     Cf(p, t);
   });
@@ -2551,8 +2551,8 @@ function Rf(e) {
         case Rn:
           return d = d.get(x.key === null ? h : x.key) || null, a(c, d, x, _);
         case It:
-          var T = x._init;
-          return v(d, c, h, T(x._payload), _);
+          var N = x._init;
+          return v(d, c, h, N(x._payload), _);
       }
       if (vr(x) || ir(x)) return d = d.get(h) || null, f(c, d, x, _, null);
       Co(c, x);
@@ -2560,21 +2560,21 @@ function Rf(e) {
     return null;
   }
   function g(d, c, h, x) {
-    for (var _ = null, T = null, P = c, S = c = 0, N = null; P !== null && S < h.length; S++) {
-      P.index > S ? (N = P, P = null) : N = P.sibling;
+    for (var _ = null, N = null, P = c, S = c = 0, T = null; P !== null && S < h.length; S++) {
+      P.index > S ? (T = P, P = null) : T = P.sibling;
       var E = m(d, P, h[S], x);
       if (E === null) {
-        P === null && (P = N);
+        P === null && (P = T);
         break;
       }
-      e && P && E.alternate === null && t(d, P), c = l(E, c, S), T === null ? _ = E : T.sibling = E, T = E, P = N;
+      e && P && E.alternate === null && t(d, P), c = l(E, c, S), N === null ? _ = E : N.sibling = E, N = E, P = T;
     }
     if (S === h.length) return n(d, P), J && un(d, S), _;
     if (P === null) {
-      for (; S < h.length; S++) P = p(d, h[S], x), P !== null && (c = l(P, c, S), T === null ? _ = P : T.sibling = P, T = P);
+      for (; S < h.length; S++) P = p(d, h[S], x), P !== null && (c = l(P, c, S), N === null ? _ = P : N.sibling = P, N = P);
       return J && un(d, S), _;
     }
-    for (P = r(d, P); S < h.length; S++) N = v(P, d, S, h[S], x), N !== null && (e && N.alternate !== null && P.delete(N.key === null ? S : N.key), c = l(N, c, S), T === null ? _ = N : T.sibling = N, T = N);
+    for (P = r(d, P); S < h.length; S++) T = v(P, d, S, h[S], x), T !== null && (e && T.alternate !== null && P.delete(T.key === null ? S : T.key), c = l(T, c, S), N === null ? _ = T : N.sibling = T, N = T);
     return e && P.forEach(function(B) {
       return t(d, B);
     }), J && un(d, S), _;
@@ -2583,24 +2583,24 @@ function Rf(e) {
     var _ = ir(h);
     if (typeof _ != "function") throw Error(C(150));
     if (h = _.call(h), h == null) throw Error(C(151));
-    for (var T = _ = null, P = c, S = c = 0, N = null, E = h.next(); P !== null && !E.done; S++, E = h.next()) {
-      P.index > S ? (N = P, P = null) : N = P.sibling;
+    for (var N = _ = null, P = c, S = c = 0, T = null, E = h.next(); P !== null && !E.done; S++, E = h.next()) {
+      P.index > S ? (T = P, P = null) : T = P.sibling;
       var B = m(d, P, E.value, x);
       if (B === null) {
-        P === null && (P = N);
+        P === null && (P = T);
         break;
       }
-      e && P && B.alternate === null && t(d, P), c = l(B, c, S), T === null ? _ = B : T.sibling = B, T = B, P = N;
+      e && P && B.alternate === null && t(d, P), c = l(B, c, S), N === null ? _ = B : N.sibling = B, N = B, P = T;
     }
     if (E.done) return n(
       d,
       P
     ), J && un(d, S), _;
     if (P === null) {
-      for (; !E.done; S++, E = h.next()) E = p(d, E.value, x), E !== null && (c = l(E, c, S), T === null ? _ = E : T.sibling = E, T = E);
+      for (; !E.done; S++, E = h.next()) E = p(d, E.value, x), E !== null && (c = l(E, c, S), N === null ? _ = E : N.sibling = E, N = E);
       return J && un(d, S), _;
     }
-    for (P = r(d, P); !E.done; S++, E = h.next()) E = v(P, d, S, E.value, x), E !== null && (e && E.alternate !== null && P.delete(E.key === null ? S : E.key), c = l(E, c, S), T === null ? _ = E : T.sibling = E, T = E);
+    for (P = r(d, P); !E.done; S++, E = h.next()) E = v(P, d, S, E.value, x), E !== null && (e && E.alternate !== null && P.delete(E.key === null ? S : E.key), c = l(E, c, S), N === null ? _ = E : N.sibling = E, N = E);
     return e && P.forEach(function(F) {
       return t(d, F);
     }), J && un(d, S), _;
@@ -2610,29 +2610,29 @@ function Rf(e) {
       switch (h.$$typeof) {
         case fo:
           e: {
-            for (var _ = h.key, T = c; T !== null; ) {
-              if (T.key === _) {
+            for (var _ = h.key, N = c; N !== null; ) {
+              if (N.key === _) {
                 if (_ = h.type, _ === jn) {
-                  if (T.tag === 7) {
-                    n(d, T.sibling), c = o(T, h.props.children), c.return = d, d = c;
+                  if (N.tag === 7) {
+                    n(d, N.sibling), c = o(N, h.props.children), c.return = d, d = c;
                     break e;
                   }
-                } else if (T.elementType === _ || typeof _ == "object" && _ !== null && _.$$typeof === It && Qa(_) === T.type) {
-                  n(d, T.sibling), c = o(T, h.props), c.ref = dr(d, T, h), c.return = d, d = c;
+                } else if (N.elementType === _ || typeof _ == "object" && _ !== null && _.$$typeof === It && Qa(_) === N.type) {
+                  n(d, N.sibling), c = o(N, h.props), c.ref = dr(d, N, h), c.return = d, d = c;
                   break e;
                 }
-                n(d, T);
+                n(d, N);
                 break;
-              } else t(d, T);
-              T = T.sibling;
+              } else t(d, N);
+              N = N.sibling;
             }
             h.type === jn ? (c = xn(h.props.children, d.mode, x, h.key), c.return = d, d = c) : (x = Ko(h.type, h.key, h.props, null, d.mode, x), x.ref = dr(d, c, h), x.return = d, d = x);
           }
           return i(d);
         case Rn:
           e: {
-            for (T = h.key; c !== null; ) {
-              if (c.key === T) if (c.tag === 4 && c.stateNode.containerInfo === h.containerInfo && c.stateNode.implementation === h.implementation) {
+            for (N = h.key; c !== null; ) {
+              if (c.key === N) if (c.tag === 4 && c.stateNode.containerInfo === h.containerInfo && c.stateNode.implementation === h.implementation) {
                 n(d, c.sibling), c = o(c, h.children || []), c.return = d, d = c;
                 break e;
               } else {
@@ -2646,7 +2646,7 @@ function Rf(e) {
           }
           return i(d);
         case It:
-          return T = h._init, k(d, c, T(h._payload), x);
+          return N = h._init, k(d, c, N(h._payload), x);
       }
       if (vr(h)) return g(d, c, h, x);
       if (ir(h)) return w(d, c, h, x);
@@ -6494,7 +6494,7 @@ function sg({ onAudioRecorded: e, config: t }) {
       }
   }, _ = () => {
     g.current && g.current.state === "recording" && (g.current.pause(), l(!0), k.current && clearInterval(k.current));
-  }, T = () => {
+  }, N = () => {
     g.current && g.current.state === "paused" && (g.current.resume(), l(!1), k.current = setInterval(() => {
       s((F) => F + 1);
     }, 1e3));
@@ -6507,7 +6507,7 @@ function sg({ onAudioRecorded: e, config: t }) {
         p(!1), URL.revokeObjectURL(F);
       }, d.current.play(), p(!0);
     } else d.current && f && (d.current.pause(), p(!1));
-  }, N = () => {
+  }, T = () => {
     if (u) {
       const F = new File([u], `audio-${Date.now()}.webm`, {
         type: "audio/webm;codecs=opus"
@@ -6551,7 +6551,7 @@ function sg({ onAudioRecorded: e, config: t }) {
         /* @__PURE__ */ y.jsx(
           "button",
           {
-            onClick: o ? T : _,
+            onClick: o ? N : _,
             className: "p-1 text-gray-600 hover:text-gray-800 transition-colors",
             title: o ? "Resume" : "Pause",
             children: o ? /* @__PURE__ */ y.jsx(wc, { className: "h-4 w-4" }) : /* @__PURE__ */ y.jsx(vc, { className: "h-4 w-4" })
@@ -6571,7 +6571,7 @@ function sg({ onAudioRecorded: e, config: t }) {
         /* @__PURE__ */ y.jsx(
           "button",
           {
-            onClick: N,
+            onClick: T,
             style: { backgroundColor: t.color },
             className: "px-2 py-1 text-white text-xs rounded hover:opacity-90 transition-opacity",
             title: "Send audio",
@@ -6778,11 +6778,11 @@ function dg({
     c("recent-chats"), f();
   }, _ = () => {
     c("chat");
-  }, T = (N) => {
-    a(N), c("chat");
-  }, P = (N) => {
-    p(N), c("chat");
-  }, S = i && !i.email && o.filter((N) => N.from === "user").length > 1;
+  }, N = (T) => {
+    a(T), c("chat");
+  }, P = (T) => {
+    p(T), c("chat");
+  }, S = i && !i.email && o.filter((T) => T.from === "user").length > 1;
   return /* @__PURE__ */ y.jsxs(
     "div",
     {
@@ -6827,7 +6827,7 @@ function dg({
           ag,
           {
             sessions: l,
-            onLoadSession: T,
+            onLoadSession: N,
             config: r
           }
         )
@@ -7394,11 +7394,10 @@ function Eg({ chatbotId: e }) {
   }), [r, o] = z.useState(!0), [l, i] = z.useState([]), [s, u] = z.useState(null), [a, f] = z.useState(null), [p, m] = z.useState([]), [v, g] = z.useState(
     null
   ), w = Cg({
-    host: "http://localhost:8787",
+    host: "https://ticketdesk.ai",
     party: "chatroom",
     room: e,
     onOpen() {
-      console.log("Connected to chat server");
       const S = jo(`ti_${e}_session_id`), E = {
         type: "session:join",
         client_id: jo(`ti_${e}_client_id`),
@@ -7407,28 +7406,27 @@ function Eg({ chatbotId: e }) {
       w.send(JSON.stringify(E));
     },
     onMessage(S) {
-      const { type: N, data: E } = JSON.parse(S.data);
-      console.log("Received data:", { type: N, data: E }), N === "session:joined" ? (E.session_id && (u(E.session_id), Cc(`ti_${e}_session_id`, E.session_id)), E.client_id && (f(E.client_id), Cc(`ti_${e}_client_id`, E.client_id)), i(E.messages || []), g(E.session), n({
+      const { type: T, data: E } = JSON.parse(S.data);
+      T === "session:joined" ? (E.session_id && (u(E.session_id), Cc(`ti_${e}_session_id`, E.session_id)), E.client_id && (f(E.client_id), Cc(`ti_${e}_client_id`, E.client_id)), i(E.messages || []), g(E.session), n({
         color: "#3b82f6",
         shape: "round",
         welcome_message: "Hi! How can I help you today?",
         ...E.config
-      }), o(!1)) : N === "session:list" ? m(E.sessions) : N === "message:recieved" ? i((B) => [...B, E.message]) : N === "message:read" ? i(
+      }), o(!1)) : T === "session:list" ? m(E.sessions) : T === "message:recieved" ? i((B) => [...B, E.message]) : T === "message:read" ? i(
         (B) => B.map(
           (F) => F.id === E.message_id ? { ...F, status: E.status } : F
         )
-      ) : console.log("Unhandled message type:", N, E);
+      ) : console.log("Unhandled message type:", T, E);
     },
     onClose() {
-      console.log("Disconnected from chat server");
     },
     onError(S) {
-      console.error("Socket error:", S);
+      console.error(S);
     }
   });
   z.useEffect(() => {
-    const S = jo(`ti_${e}_session_id`), N = jo(`ti_${e}_client_id`);
-    if (S && u(S), N && f(N), t != null && t.welcome_message) {
+    const S = jo(`ti_${e}_session_id`), T = jo(`ti_${e}_client_id`);
+    if (S && u(S), T && f(T), t != null && t.welcome_message) {
       const E = {
         id: mr(),
         from: "agent",
@@ -7445,7 +7443,7 @@ function Eg({ chatbotId: e }) {
         console.log("No session details yet, cannot send message");
         return;
       }
-      const N = {
+      const T = {
         id: mr(),
         from: "user",
         content: S,
@@ -7454,7 +7452,7 @@ function Eg({ chatbotId: e }) {
         status: w ? "sent" : "failed"
       };
       if (i((E) => {
-        const B = [...E, N];
+        const B = [...E, T];
         return v && !v.email && !E.find((F) => F.type === "form") && setTimeout(() => {
           const F = {
             id: mr(),
@@ -7472,7 +7470,7 @@ function Eg({ chatbotId: e }) {
           session_id: s,
           client_id: a,
           message: {
-            id: N.id,
+            id: T.id,
             from: "user",
             content: S,
             type: "text",
@@ -7489,7 +7487,7 @@ function Eg({ chatbotId: e }) {
         console.log("No session details yet, cannot send file");
         return;
       }
-      const N = {
+      const T = {
         id: mr(),
         from: "user",
         content: `Uploading ${S.name}...`,
@@ -7501,14 +7499,14 @@ function Eg({ chatbotId: e }) {
           type: S.type
         }
       };
-      i((E) => [...E, N]);
+      i((E) => [...E, T]);
       try {
         const E = new FormData();
         E.append("file", S), E.append("chatbotId", e), E.append("session_id", s), E.append("client_id", a), await new Promise((F) => setTimeout(F, 1e3));
         const B = URL.createObjectURL(S);
         if (i(
           (F) => F.map(
-            (re) => re.id === N.id ? {
+            (re) => re.id === T.id ? {
               ...re,
               content: "",
               status: "sent",
@@ -7524,7 +7522,7 @@ function Eg({ chatbotId: e }) {
             session_id: s,
             client_id: a,
             message: {
-              id: N.id,
+              id: T.id,
               from: "user",
               type: "file",
               timestamp: Date.now(),
@@ -7540,7 +7538,7 @@ function Eg({ chatbotId: e }) {
       } catch (E) {
         console.log("Error", E), i(
           (B) => B.map(
-            (F) => F.id === N.id ? {
+            (F) => F.id === T.id ? {
               ...F,
               status: "failed",
               content: `Failed to upload ${S.name}`
@@ -7558,14 +7556,14 @@ function Eg({ chatbotId: e }) {
         client_id: a
       };
       w.send(JSON.stringify(S)), t != null && t.welcome_message && setTimeout(() => {
-        const N = {
+        const T = {
           id: mr(),
           from: "agent",
           content: t.welcome_message,
           type: "text",
           timestamp: Date.now()
         };
-        i([N]);
+        i([T]);
       }, 100);
     }
   }, [w, a, t == null ? void 0 : t.welcome_message]), h = z.useCallback(() => {
@@ -7580,12 +7578,12 @@ function Eg({ chatbotId: e }) {
   }, [w, s, a]), x = z.useCallback(
     (S) => {
       if (w) {
-        const N = {
+        const T = {
           type: "session:join",
           session_id: S,
           client_id: a
         };
-        w.send(JSON.stringify(N)), u(S);
+        w.send(JSON.stringify(T)), u(S);
       }
     },
     [w, a]
@@ -7597,19 +7595,19 @@ function Eg({ chatbotId: e }) {
       };
       w.send(JSON.stringify(S));
     }
-  }, [w, a]), T = z.useCallback(
+  }, [w, a]), N = z.useCallback(
     (S) => {
       if (w && a) {
-        const N = {
+        const T = {
           type: "profile:update",
           client_id: a,
           profile: S
         };
-        w.send(JSON.stringify(N));
+        w.send(JSON.stringify(T));
       }
       g(
-        (N) => N && {
-          ...N,
+        (T) => T && {
+          ...T,
           ...S
         }
       );
@@ -7621,24 +7619,24 @@ function Eg({ chatbotId: e }) {
         console.log("No session details yet, cannot retry message");
         return;
       }
-      const N = l.find((E) => E.id === S);
-      if (N && N.from === "user")
+      const T = l.find((E) => E.id === S);
+      if (T && T.from === "user")
         if (i(
           (E) => E.map(
             (B) => B.id === S ? { ...B, status: "sent" } : B
           )
         ), w)
-          if (N.file) {
+          if (T.file) {
             const E = {
               type: "message:file",
               session_id: s,
               client_id: a,
               message: {
-                id: N.id,
+                id: T.id,
                 from: "user",
                 type: "file",
                 timestamp: Date.now(),
-                file: N.file
+                file: T.file
               }
             };
             w.send(JSON.stringify(E));
@@ -7648,9 +7646,9 @@ function Eg({ chatbotId: e }) {
               session_id: s,
               client_id: a,
               message: {
-                id: N.id,
+                id: T.id,
                 from: "user",
-                content: N.content,
+                content: T.content,
                 type: "text",
                 timestamp: Date.now()
               }
@@ -7675,7 +7673,7 @@ function Eg({ chatbotId: e }) {
     endCurrentChat: h,
     loadSession: x,
     getRecentChats: _,
-    updateProfile: T,
+    updateProfile: N,
     sessions: p,
     selectedSession: v,
     isConnected: !!w,
@@ -10235,7 +10233,7 @@ var Av = Uh(function(e) {
       if (!u(d) || f(d) || p(d) || m(d) || s(d)) return d;
       var h, x = 0, _ = 0;
       if (a(d)) for (h = [], _ = d.length; x < _; x++) h.push(n(k, d[x], c));
-      else for (var T in h = {}, d) Object.prototype.hasOwnProperty.call(d, T) && (h[k(T, c)] = n(k, d[T], c));
+      else for (var N in h = {}, d) Object.prototype.hasOwnProperty.call(d, N) && (h[k(N, c)] = n(k, d[N], c));
       return h;
     }, r = function(k) {
       return v(k) ? k : (k = k.replace(/[\-_\s]+(.)?/g, function(d, c) {
@@ -10353,14 +10351,14 @@ function Yv(e) {
     return z.useLayoutEffect(function() {
       if (k.current) try {
         if (typeof r == "function" && r(k.current), v) {
-          var T = k.current.shadowRoot;
-          return void x(T);
+          var N = k.current.shadowRoot;
+          return void x(N);
         }
         var P = k.current.attachShadow({ mode: s, delegatesFocus: a });
         p.length > 0 && (P.adoptedStyleSheets = p), x(P);
       } catch (S) {
-        (function(N) {
-          var E = N.error, B = N.styleSheets, F = N.root;
+        (function(T) {
+          var E = T.error, B = T.styleSheets, F = T.root;
           switch (E.name) {
             case "NotSupportedError":
               B.length > 0 && (F.adoptedStyleSheets = B);
