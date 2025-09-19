@@ -1,6 +1,6 @@
 {
   "name": "ticketdesk-chatbot",
-  "version": "0.1",
+  "version": "0.1.0",
   "description": "Ticketdesk AI chatbot for customer support powered by ChatGPT. Provide instant automated responses, AI-powered self-service, and assign to human chat support agents for better customer experience.",
   "main": "dist/ticketdesk-chatbot.umd.js",
   "files": [
