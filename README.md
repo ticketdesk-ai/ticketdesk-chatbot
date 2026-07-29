@@ -1,8 +1,8 @@
 # Ticketdesk Widget
 
-[![version](https://img.shields.io/npm/v/ticketdesk-widget.svg)](https://www.npmjs.com/package/ticketdesk-widget)
-[![license](https://img.shields.io/npm/l/ticketdesk-widget.svg)](https://www.npmjs.com/package/ticketdesk-widget)
-[![hits per month](https://data.jsdelivr.com/v1/package/npm/ticketdesk-widget/badge)](https://www.jsdelivr.com/package/npm/ticketdesk-widget)
+[![version](https://img.shields.io/npm/v/ticketdesk-chatbot.svg)](https://www.npmjs.com/package/ticketdesk-chatbot)
+[![license](https://img.shields.io/npm/l/ticketdesk-chatbot.svg)](https://www.npmjs.com/package/ticketdesk-chatbot)
+[![hits per month](https://data.jsdelivr.com/v1/package/npm/ticketdesk-chatbot/badge)](https://www.jsdelivr.com/package/npm/ticketdesk-chatbot)
 
 Ticketdesk chat widget to embed on any website for live customer support + AI chatbot helpdesk, providing instant automated responses, smart self-service, and handoff to human agents when needed for a superior customer support experience.
 
@@ -36,14 +36,20 @@ You can load the chatbot script directly from the Ticketdesk AI CDN:
 <script>
   window.TICKETDESK_ID = 'd-xxxx-xxxx-s-xxxxsxxx'; // Replace with your ID
 </script>
-<script src="https://ticketdesk.ai/ticketdesk-widget.min.js"></script>
+<script src="https://ticketdesk.ai/ticketdesk-chatbot.min.js"></script>
 ```
 
-Or, download the `ticketdesk-widget.min.js` locally.
+Or, download the `ticketdesk-chatbot.min.js` locally.
 
 ```
-<script src="/js/ticketdesk-widget.min.js"></script>
+<script src="/js/ticketdesk-chatbot.min.js"></script>
 ```
+
+## Change log
+
+### July 2026
+- Added suggestions feature
+![Ticketdesk AI Chatbot](/assets/chat-suggestions.png)
 
 ## Support
 

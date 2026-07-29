@@ -1,8 +1,8 @@
 {
-  "name": "ticketdesk-widget",
+  "name": "ticketdesk-chatbot",
   "version": "0.1.6",
   "description": "Ticketdesk chat widget for live human customer support + AI chatbot using ChatGPT 5. Provide instant automated responses, AI-powered self-service, and assign to human chat support agents for better customer experience.",
-  "main": "dist/ticketdesk-widget.min.js",
+  "main": "dist/ticketdesk-chatbot.min.js",
   "type": "module",
   "types": "dist/index.d.ts",
   "files": [
@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ticketdesk-ai/ticketdesk-widget.git"
+    "url": "git+https://github.com/ticketdesk-ai/ticketdesk-chatbot.git"
   },
   "keywords": [
     "chat",
@@ -38,7 +38,7 @@
   "author": "https://github.com/vickyRathee",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ticketdesk-ai/ticketdesk-widget/issues"
+    "url": "https://github.com/ticketdesk-ai/ticketdesk-chatbot/issues"
   },
   "homepage": "https://ticketdesk.ai/",
   "dependencies": {
