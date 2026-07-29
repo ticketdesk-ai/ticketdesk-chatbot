@@ -1,4 +1,4 @@
-import type { Message, ChatSession, ChatState } from '../types/widget';
+import type { Message, ChatSession, ChatState, Suggestion } from '../types/widget';
 import { Header } from './Header';
 import { MessageList } from './MessageList';
 import { MessageInput } from './MessageInput';
@@ -56,7 +56,7 @@ export function ChatWindow({
   onSendMessage,
 }: ChatWindowProps) {
   const [currentView, setCurrentView] = useState<'chat' | 'recent-chats'>(
-    'chat'
+    'chat',
   );
   if (!isOpen) return null;
 
@@ -86,7 +86,7 @@ export function ChatWindow({
     onUpdateProfile(profile);
     setCurrentView('chat');
   };
-
+  
   const hasEmailWarning =
     selectedSession &&
     !selectedSession.email &&

@@ -5,9 +5,9 @@ import { generateId, getLocalStorage, setLocalStorage } from '../utils/helper';
 import { useSocketStore } from './useSocketStore';
 
 export function useChatHook({ ticketdeskId }: { ticketdeskId: string }) {
-  const [roomId, siteId] = ticketdeskId.split('_');
+  const [roomId, chatbotId] = ticketdeskId.split('_');
   const getSocket = useSocketStore((s) => s.getSocket);
-  const socket = getSocket(roomId, siteId);
+  const socket = getSocket(roomId, chatbotId);
   const [audio, setAudio] = useState<HTMLAudioElement | null>(null);
 
   const [config, setConfig] = useState<ChatBotConfig>({
@@ -16,6 +16,7 @@ export function useChatHook({ ticketdeskId }: { ticketdeskId: string }) {
     shape: 'round',
     welcome_message: 'Hi there!',
     fields: ['email'],
+    suggestions: []
   });
 
   const [isLoading, setIsLoading] = useState(true);
@@ -33,12 +34,12 @@ export function useChatHook({ ticketdeskId }: { ticketdeskId: string }) {
     operators: [],
   });
   const [typingTimeoutRef, setTypingTimeoutRef] =
-    useState<NodeJS.Timeout | null>(null);
+    useState<ReturnType<typeof setTimeout> | null>(null);
 
   const playOff = useCallback(() => {
     if (audio) {
       audio.currentTime = 0; // reset
-      audio.play().catch(() => {});
+      audio.play().catch(() => { });
     }
   }, [audio]);
 
@@ -58,21 +59,27 @@ export function useChatHook({ ticketdeskId }: { ticketdeskId: string }) {
         case 'session:joined': {
           if (data.session_id) {
             setSessionId(data.session_id);
-            setLocalStorage(`ti_${siteId}_session_id`, data.session_id);
+            setLocalStorage(`ti_${chatbotId}_session_id`, data.session_id);
           }
           if (data.client_id) {
             setClientId(data.client_id);
-            setLocalStorage(`ti_${siteId}_client_id`, data.client_id);
+            setLocalStorage(`ti_${chatbotId}_client_id`, data.client_id);
           }
 
-          const welcomeMessage: Message = {
-            id: generateId(),
-            from: 'agent',
-            content: config.welcome_message!,
-            type: 'text',
-            timestamp: Date.now(),
-          };
-          setMessages([welcomeMessage, ...(data.messages || [])]);
+          const sessionMessages: Message[] = [...(data.messages || [])];
+
+          // Add welcome message only if there are no suggestions
+          if (!config.suggestions?.length) {
+            sessionMessages.unshift({
+              id: generateId(),
+              from: "agent",
+              content: config.welcome_message!,
+              type: "text",
+              timestamp: Date.now(),
+            });
+          }
+
+          setMessages(sessionMessages);
 
           setSelectedSession(data.session);
           if (data.last_active) {
@@ -149,7 +156,7 @@ export function useChatHook({ ticketdeskId }: { ticketdeskId: string }) {
           console.log('Unhandled message type:', type, data);
       }
     },
-    [config.welcome_message, playOff, siteId, typingTimeoutRef]
+    [config.suggestions?.length, config.welcome_message, chatbotId, typingTimeoutRef, playOff]
   );
 
   useEffect(() => {
@@ -160,11 +167,11 @@ export function useChatHook({ ticketdeskId }: { ticketdeskId: string }) {
   }, [socket, handleIncomingMessage]);
 
   useEffect(() => {
-    const sId = getLocalStorage(`ti_${siteId}_session_id`);
-    const cId = getLocalStorage(`ti_${siteId}_client_id`);
+    const sId = getLocalStorage(`ti_${chatbotId}_session_id`);
+    const cId = getLocalStorage(`ti_${chatbotId}_client_id`);
     if (sId) setSessionId(sId);
     if (cId) setClientId(cId);
-  }, [siteId]);
+  }, [chatbotId]);
 
   const getPreetyContent = (fields: string[]) => {
     const pretty = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
@@ -189,7 +196,7 @@ export function useChatHook({ ticketdeskId }: { ticketdeskId: string }) {
           type: 'message:new',
           session_id: sessionId,
           client_id: clientId,
-          site_id: siteId,
+          chatbot_id: chatbotId,
           message: msg,
         })
       );
@@ -213,7 +220,7 @@ export function useChatHook({ ticketdeskId }: { ticketdeskId: string }) {
         }, 1000);
       }
     },
-    [socket, sessionId, clientId, siteId, config.fields]
+    [socket, sessionId, clientId, chatbotId, config.fields]
   );
 
   const startNewChat = useCallback(() => {
@@ -222,7 +229,7 @@ export function useChatHook({ ticketdeskId }: { ticketdeskId: string }) {
     const payload = {
       type: 'session:new',
       client_id: clientId,
-      site_id: siteId,
+      chatbot_id: chatbotId,
     };
 
     socket.send(JSON.stringify(payload));
@@ -239,7 +246,7 @@ export function useChatHook({ ticketdeskId }: { ticketdeskId: string }) {
     } else {
       setMessages([]);
     }
-  }, [socket, clientId, siteId, config]);
+  }, [socket, clientId, chatbotId, config]);
 
   const loadSession = useCallback(
     (newSessionId: string | null) => {
@@ -249,12 +256,12 @@ export function useChatHook({ ticketdeskId }: { ticketdeskId: string }) {
         type: newSessionId ? 'session:join' : 'session:new',
         session_id: newSessionId,
         client_id: clientId,
-        site_id: siteId,
+        chatbot_id: chatbotId,
       };
       socket.send(JSON.stringify(payload));
       if (newSessionId) setSessionId(newSessionId);
     },
-    [socket, clientId, siteId]
+    [socket, clientId, chatbotId]
   );
 
   const endCurrentChat = useCallback(() => {
@@ -263,22 +270,22 @@ export function useChatHook({ ticketdeskId }: { ticketdeskId: string }) {
       type: 'session:state',
       session_id: sessionId,
       client_id: clientId,
-      site_id: siteId,
+      chatbot_id: chatbotId,
       state: 'resolved',
     };
     socket.send(JSON.stringify(payload));
-  }, [socket, sessionId, clientId, siteId]);
+  }, [socket, sessionId, clientId, chatbotId]);
 
   const getRecentChats = useCallback(() => {
     if (socket && clientId) {
       const getSessionsPayload = {
         type: 'session:list',
         client_id: clientId,
-        site_id: siteId,
+        chatbot_id: chatbotId,
       };
       socket.send(JSON.stringify(getSessionsPayload));
     }
-  }, [socket, clientId, siteId]);
+  }, [socket, clientId, chatbotId]);
 
   const updateProfile = useCallback(
     (data: Record<string, string>) => {
@@ -287,14 +294,14 @@ export function useChatHook({ ticketdeskId }: { ticketdeskId: string }) {
           type: 'session:update',
           client_id: clientId,
           session_id: sessionId,
-          site_id: siteId,
+          chatbot_id: chatbotId,
           data: data,
         };
         socket.send(JSON.stringify(updateProfilePayload));
       }
       setSelectedSession((prev) => (prev ? { ...prev, ...data } : prev));
     },
-    [socket, clientId, siteId, sessionId]
+    [socket, clientId, chatbotId, sessionId]
   );
 
   return {

@@ -1,3 +1,7 @@
+export interface Suggestion {
+  label: string,
+  message?: string
+}
 export interface ChatBotConfig {
   name: string;
   color?: string;
@@ -5,6 +9,7 @@ export interface ChatBotConfig {
   icon?: string;
   welcome_message?: string;
   fields?: string[];
+  suggestions?: Suggestion[];
 }
 
 export interface Message {

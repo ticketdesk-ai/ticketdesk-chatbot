@@ -3,13 +3,13 @@ import { PartySocket } from 'partysocket';
 
 interface SocketState {
   sockets: Record<string, PartySocket>;
-  getSocket: (roomId: string, siteId: string) => PartySocket;
+  getSocket: (roomId: string, chatbotId: string) => PartySocket;
 }
 
 export const useSocketStore = create<SocketState>((set, get) => ({
   sockets: {},
-  getSocket: (roomId: string, siteId: string) => {
-    const key = `${siteId}_${roomId}`;
+  getSocket: (roomId: string, chatbotId: string) => {
+    const key = `${chatbotId}_${roomId}`;
     const existing = get().sockets[key];
     if (existing) return existing;
 
@@ -17,11 +17,12 @@ export const useSocketStore = create<SocketState>((set, get) => ({
       host: import.meta.env.PROD
         ? 'https://api.ticketdesk.ai'
         : 'http://localhost:8787',
+      prefix: "ws",
       party: 'chatroom',
       room: roomId,
       query: {
-        site_id: siteId,
-        session_id: localStorage.getItem(`ti_${siteId}_session_id`),
+        chatbot_id: chatbotId,
+        session_id: localStorage.getItem(`ti_${chatbotId}_session_id`),
       },
     });
 
