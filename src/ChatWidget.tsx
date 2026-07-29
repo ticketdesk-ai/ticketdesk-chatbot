@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { ChatButton } from './components/ChatButton';
 import { ChatWindow } from './components/ChatWindow';
 import { useChatHook } from './hooks/useChatHook';
-import shadow from 'react-shadow';
+import root from 'react-shadow';
 import styles from './index.css?inline';
 import { getLocalStorage } from './utils/helper';
 
@@ -15,7 +15,7 @@ function normalizeTailwind(css: string): string {
 }
 
 export function ChatWidget({ ticketdeskId }: { ticketdeskId: string }) {
-  const [, siteId] = ticketdeskId.split('_');
+  const [, chatbotId] = ticketdeskId.split('_');
   const [isOpen, setIsOpen] = useState(false);
   const [isMaximized, setIsMaximized] = useState(false);
   const {
@@ -40,7 +40,7 @@ export function ChatWidget({ ticketdeskId }: { ticketdeskId: string }) {
 
   const toggleChatbox = (open: boolean) => {
     if (open) {
-      const existingSessionId = getLocalStorage(`ti_${siteId}_session_id`);
+      const existingSessionId = getLocalStorage(`ti_${chatbotId}_session_id`);
       loadSession(existingSessionId);
     }
     setIsOpen(open);
@@ -51,8 +51,25 @@ export function ChatWidget({ ticketdeskId }: { ticketdeskId: string }) {
   }
 
   return (
-    <shadow.div style={{ display: 'block' }}>
-      <style>{normalizeTailwind(styles)}</style>
+    <root.div style={{ display: 'block' }}>
+      <style>
+        {`
+        :host {
+          all: initial;
+          font-family: system-ui, -apple-system, BlinkMacSystemFont,
+            "Segoe UI", Roboto, sans-serif;
+          font-size: 14px;
+          line-height: 1.5;
+          color: #111;
+          display: block;
+        }
+
+        *, *::before, *::after {
+          box-sizing: border-box;
+        }
+      `}
+        {normalizeTailwind(styles)}
+      </style>
       <ChatButton
         isOpen={isOpen}
         onClick={() => toggleChatbox(!isOpen)}
@@ -79,6 +96,6 @@ export function ChatWidget({ ticketdeskId }: { ticketdeskId: string }) {
         onToggleMaximize={() => setIsMaximized(!isMaximized)}
         onSendMessage={sendMessage}
       />
-    </shadow.div>
+    </root.div>
   );
 }

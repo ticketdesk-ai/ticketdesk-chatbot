@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import type { ChatState, Message } from '../types/widget';
+import type { ChatState, Message, Suggestion } from '../types/widget';
 import { MessageStatus } from './MessageStatus';
 import { DynamicForm } from './DynamicForm';
 import type { ChatBotConfig } from '../types/widget';
@@ -25,6 +25,17 @@ export function MessageList({
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
+
+  const handleSuggestionClick = (suggestion: Suggestion) => {
+    const newMessage: Message = {
+      from: 'user',
+      content: suggestion.message || suggestion.label,
+      type: 'text',
+      timestamp: Date.now(),
+      status: 'sent',
+    };
+    onSendMessage(newMessage);
+  };
 
   const renderMessageContent = (message: Message) => {
     if (message.file?.url) {
@@ -78,6 +89,21 @@ export function MessageList({
 
   return (
     <div className="flex-1 overflow-y-auto p-6 space-y-4">
+      {config.suggestions && config.suggestions.length > 0 && (
+        <div className="flex flex-wrap gap-2">
+          {config.suggestions.map((suggestion, index) => (
+            <button
+              key={index}
+              type="button"
+              className="rounded-full border bg-white px-3 py-1.5 text-sm text-gray-700 transition-colors hover:bg-gray-100"
+              onClick={() => handleSuggestionClick(suggestion)}
+            >
+              {suggestion.label}
+            </button>
+          ))}
+        </div>
+      )}
+
       {messages.map((message, index) => (
         <div
           key={message.id || index}

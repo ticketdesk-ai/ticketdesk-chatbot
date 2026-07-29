@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { ChatWidget } from './ChatWidget';
 
 function App() {
-  const [ticketdeskId] = useState<string>('d-b3ef9c52aa_s-xdxugyq0ni');
+  const [ticketdeskId] = useState<string>('d-lhi6r7o1v4_s-whyuxd8bgp');
 
   return (
     <div className="min-h-screen bg-gray-100 p-8">
